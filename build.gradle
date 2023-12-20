@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group = 'pl.zajavka'
+version = '1.0-SNAPSHOT'
+
+
+//ext{
+//    logbackVersion = '1.4.11'
+//    lombokVersion = '1.18.30'
+////    springVersion = '6.0.12'
+////    junitVersion = '5.10.0'
+////    mockitoVersion = '5.2.0'
+//}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    compileOnly 'jakarta.platform:jakarta.jakartaee-api:9.1.0'
+    compileOnly 'jakarta.servlet.jsp:jakarta.servlet.jsp-api:3.1.0'
+    implementation 'org.springframework:spring-webmvc:6.0.0'
+
+//    implementation "ch.qos.logback:logback-classic:$logbackVersion"
+//    compileOnly "org.projectlombok:lombok:$lombokVersion"
+//    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+}
+
+war {
+    archiveFileName = 'sample-web-mvc-app.war'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+compileJava.options.encoding = 'UTF-8'
